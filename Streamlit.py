@@ -39,6 +39,7 @@ if st.button('Предсказать'):
     # Предсказание
     prediction = loaded_model.predict(input_data)
 
-    # Вывод результата
-    st.write("Предсказанный доход:")
-    st.write(prediction[0])
+    if prediction[0] == 1:
+      st.write("Предсказанный доход: >50K")
+    else:
+      st.write("Предсказанный доход: <=50K")
