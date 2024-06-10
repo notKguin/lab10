@@ -21,7 +21,7 @@ st.title('Предсказание дохода')
 # Вводные данные (только необходимые поля)
 age = st.number_input('Возраст', min_value=0, max_value=100)
 relationship = st.selectbox('Семейное положение', ['Not-in-family', 'Husband', 'Wife', 'Own-child', 'Unmarried', 'Other-relative'])
-capital_gain = st.number_input('Прирост капитала', min_value=0)
+capital_gain = st.number_input('Прирост капитала', min_value=0, max_value=16)
 education_num = st.number_input('Количество лет обучения', min_value=0)
 marital_status = st.selectbox('Семейное положение', ['Never-married', 'Married-civ-spouse', 'Divorced', 'Married-spouse-absent', 'Separated', 'Married-AF-spouse', 'Widowed'])
 
@@ -41,4 +41,4 @@ if st.button('Предсказать'):
     
     # Вывод результата
     st.write("Предсказанный доход:")
-    st.write(prediction)
+    st.write(prediction[0])
