@@ -33,3 +33,30 @@ capital_gain = st.number_input('Прирост капитала', min_value=0)
 capital_loss = st.number_input('Убыток капитала', min_value=0)
 hours_per_week = st.number_input('Количество рабочих часов в неделю', min_value=0)
 native_country = st.selectbox('Страна происхождения', ['United-States', 'Cuba', 'Jamaica', 'India', '?', 'Mexico', 'South', 'Puerto-Rico', 'Honduras', 'England', 'Canada'])
+
+# Кнопка для запуска предсказания
+if st.button('Предсказать'):
+    # Создание DataFrame из введенных данных
+    input_data = pd.DataFrame({
+        "age": [age],
+        "workclass": [workclass],
+        "fnlwgt": [fnlwgt],
+        "education": [education],
+        "education_num": [education_num],
+        "marital_status": [marital_status],
+        "occupation": [occupation],
+        "relationship": [relationship],
+        "race": [race],
+        "sex": [sex],
+        "capital_gain": [capital_gain],
+        "capital_loss": [capital_loss],
+        "hours_per_week": [hours_per_week],
+        "native_country": [native_country]
+    })
+
+    # Предсказание
+    prediction = loaded_model.predict(input_data)
+
+    # Вывод результата
+    st.write("Предсказанный доход:")
+    st.write(prediction[0])
