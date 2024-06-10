@@ -41,4 +41,4 @@ if st.button('Предсказать'):
     
     # Вывод результата
     st.write("Предсказанный доход:")
-    st.write(prediction[0])
+    st.write(prediction)
