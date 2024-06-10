@@ -18,40 +18,22 @@ with open('decision_tree_model.pkl', 'rb') as file:
 # Создание интерфейса Streamlit
 st.title('Предсказание дохода')
 
-# Вводные данные
+# Вводные данные (только необходимые поля)
 age = st.number_input('Возраст', min_value=0, max_value=100)
-workclass = st.selectbox('Категория рабочего класса', ['State-gov', 'Self-emp-not-inc', 'Private', 'Federal-gov', 'Local-gov', '?', 'Self-emp-inc', 'Without-pay', 'Never-worked'])
-fnlwgt = st.number_input('fnlwgt', min_value=0)
-education = st.selectbox('Уровень образования', ['Bachelors', 'HS-grad', '11th', 'Masters', '9th', 'Some-college', 'Assoc-acdm', 'Assoc-voc', '7th-8th', 'Doctorate', 'Prof-school', '5th-6th', '10th', '1st-4th', 'Preschool', '12th'])
+relationship = st.selectbox('Семейное положение', ['Not-in-family', 'Husband', 'Wife', 'Own-child', 'Unmarried', 'Other-relative'])
+capital_gain = st.number_input('Прирост капитала', min_value=0)
 education_num = st.number_input('Количество лет обучения', min_value=0)
 marital_status = st.selectbox('Семейное положение', ['Never-married', 'Married-civ-spouse', 'Divorced', 'Married-spouse-absent', 'Separated', 'Married-AF-spouse', 'Widowed'])
-occupation = st.selectbox('Профессия', ['Adm-clerical', 'Exec-managerial', 'Handlers-cleaners', 'Prof-specialty', 'Other-service', 'Sales', 'Craft-repair', '?', 'Transport-moving', 'Farming-fishing', 'Machine-op-inspct', 'Tech-support', 'Protective-serv', 'Armed-Forces', 'Priv-house-serv'])
-relationship = st.selectbox('Семейное положение', ['Not-in-family', 'Husband', 'Wife', 'Own-child', 'Unmarried', 'Other-relative'])
-race = st.selectbox('Раса', ['White', 'Black', 'Asian-Pac-Islander', 'Amer-Indian-Eskimo', 'Other'])
-sex = st.selectbox('Пол', ['Male', 'Female'])
-capital_gain = st.number_input('Прирост капитала', min_value=0)
-capital_loss = st.number_input('Убыток капитала', min_value=0)
-hours_per_week = st.number_input('Количество рабочих часов в неделю', min_value=0)
-native_country = st.selectbox('Страна происхождения', ['United-States', 'Cuba', 'Jamaica', 'India', '?', 'Mexico', 'South', 'Puerto-Rico', 'Honduras', 'England', 'Canada'])
 
 # Кнопка для запуска предсказания
 if st.button('Предсказать'):
-    # Создание DataFrame из введенных данных
+    # Создание DataFrame из введенных данных (только необходимые столбцы)
     input_data = pd.DataFrame({
         "age": [age],
-        "workclass": [workclass],
-        "fnlwgt": [fnlwgt],
-        "education": [education],
-        "education_num": [education_num],
-        "marital_status": [marital_status],
-        "occupation": [occupation],
         "relationship": [relationship],
-        "race": [race],
-        "sex": [sex],
         "capital_gain": [capital_gain],
-        "capital_loss": [capital_loss],
-        "hours_per_week": [hours_per_week],
-        "native_country": [native_country]
+        "education_num": [education_num],
+        "marital_status": [marital_status]
     })
 
     # Предсказание
