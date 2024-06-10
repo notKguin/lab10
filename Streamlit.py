@@ -9,10 +9,11 @@ Original file is located at
 
 import streamlit as st
 import pandas as pd
-from pypmml import Model
+import pickle
 
 # Загрузка PMML модели
-model = Model.fromFile('DecisionTreeAdult.pmml')
+with open('decision_tree_model.pkl', 'rb') as file:
+    loaded_model = pickle.load(file)
 
 # Создание интерфейса Streamlit
 st.title('Предсказание дохода')
