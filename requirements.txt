@@ -2,3 +2,4 @@ streamlit
 pandas
 pypmml
 sklearn2pmml
+scikit-learn==1.2.2
